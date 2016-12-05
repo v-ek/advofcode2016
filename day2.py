@@ -47,7 +47,7 @@ def l1_norm(v1):
 with open('input_d2.txt') as f: 
     lines = [x.strip('\n') for x in f.readlines()]
 
-# dict for transaling pos to key value
+# dict for translating pos to key value
 pos_to_var_1 = {
     (0, 0): 7,
     (0, 1): 4,
