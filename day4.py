@@ -10,11 +10,13 @@ def get_code_and_decrypt(line):
     numbers_re = r'(?<=\w|\-)[0-9]+'
     checksum_re = r'(?<=\[)[a-z]+'
 
-    # Get the parts
+    # Get (match) the parts
+    # Letters with the dashes
     letters = re.match(letters_re, line).group(0)
     letters_cln = letters.replace('-', '')
     cntr = Counter(letters_cln)
     common = cntr.most_common()
+    # Sort by frequency, then alphabetic
     common.sort(key=lambda x:(-x[1], x[0]))
     
     top_5_list = [item[0] for item in common][:5]
@@ -34,7 +36,7 @@ def get_code_and_decrypt(line):
     return code, decrypted
 
 def decrypt(text, code):
-    """decrypt a line"""
+    """decrypts a line given the line and a code"""
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     length = len(alphabet)
     decrypted = []
@@ -57,6 +59,7 @@ with open('input_d4.txt') as f:
 sum_of_codes = 0
 
 for line in lines:
+    # Old implementation
     # sum_of_codes += get_room_code(line)
     code, decrypted = get_code_and_decrypt(line)
     sum_of_codes += code

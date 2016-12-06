@@ -6,6 +6,7 @@ def l1_norm(v1):
     return norm
 
 def is_triangle(v1):
+    """ checks if a sorted list-like of length 3 is a triangle"""
     sides = list(v1)
     sides.sort()
     if l1_norm(sides[:2]) > sides[2]:
@@ -14,6 +15,7 @@ def is_triangle(v1):
 
 
 def split_int(line):
+    """ strips, splits and returns the line as a list of ints"""
     line_out = line.strip().split()
     line_out = [int(part) for part in line_out]
     return line_out

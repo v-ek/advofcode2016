@@ -1,8 +1,6 @@
 
 def parse_instr(instr, state):
-    # Parse instruction of form [A-Z][0-9]+
-    # Left (pos) N V S E
-    # Right N E S V
+    """ Parse instruction of form [A-Z][0-9]+ """
     
     _directions = ('N', 'V', 'S', 'E')
     _num_dirs = len(_directions)
@@ -33,7 +31,7 @@ def parse_instr(instr, state):
         state['prior_locs'].append(tuple(pos))
 
 def walk(pos, direction, steps):
-    """ Walk, changes coordinates in-place """
+    """ Walk, changes coordinates in-place, no longer used"""
     if direction == 'N':
         pos[1] = pos[1] + steps
     elif direction == 'S':
@@ -51,6 +49,7 @@ def l1_norm(v1):
     return norm
 
 def get_duplicates(list_):
+    """ Simple counter of element that come (>=) twice""" 
     seen = []
     seen2 = []
     for item in list_:
@@ -61,6 +60,7 @@ def get_duplicates(list_):
     return seen2
 
 def create_instr_from_file(fname='input_d1.txt'):
+    """ Build instructions from the imput """
     with open('input_d1.txt') as f: 
         lines = [x.strip('\n') for x in f.readlines()]
 
